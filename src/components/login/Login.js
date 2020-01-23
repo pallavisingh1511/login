@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 import './Login.css';
-import './../../App.css';
 
 class Login extends Component {
     constructor () {
@@ -8,6 +8,7 @@ class Login extends Component {
         this.state = {
             username: '',
             password: '',
+            error: ''
         }
     }
 
@@ -22,10 +23,22 @@ class Login extends Component {
             password: event.currentTarget.value
         })
     }
-    _login = () => {
+    _login = (event) => {
         let usersData = JSON.parse(localStorage.getItem("user")) || [];
         let _this = this
-        let aaa = usersData.find(function(o){return o["username"] === _this.state.username && o["password"] === _this.state.password;})
+        let currentUser = usersData.find(function(o){return o["username"] === _this.state.username && o["password"] === _this.state.password;})
+        if (currentUser) {
+            this.setState({
+                error: ''
+            })
+            localStorage.setItem('loggedIn', JSON.stringify(currentUser));
+            this.props.history.push('/profile')
+        } else {
+            this.setState({
+                error: 'User Not Found!'
+            })
+        }
+        event.preventDefault();
     }
 
     render () {
@@ -42,6 +55,16 @@ class Login extends Component {
                         <input className="login-input" type="password" value={this.state.password} onChange={this._handlePasswordChange} />
                     </label>
                     <input type="submit" value="Submit" className="submit-button" />
+                    {
+                        this.state.error &&
+                        <>
+                            <div className="error">
+                                {this.state.error}
+                            </div>
+                            New User?<Link to="/register">Register</Link>
+                        </>
+
+                    }
                 </form>
             </div>
         );

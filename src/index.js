@@ -1,11 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
-import { Route, Link, BrowserRouter as Router } from 'react-router-dom'
+import { Route, BrowserRouter as Router } from 'react-router-dom'
 import * as serviceWorker from './serviceWorker';
 import App from './App'
 import Login from './components/login/Login'
 import Register from './components/register/Register'
+import Profile from './components/profile/Profile'
 
 const app = (
   <Router>
@@ -13,6 +14,7 @@ const app = (
       <Route exact path="/" component={App} />
       <Route path="/login" component={Login} />
       <Route path="/register" component={Register} />
+      <Route path="/profile" component={Profile} />
     </div>
   </Router>
 )

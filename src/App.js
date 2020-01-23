@@ -2,8 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 // import logo from './logo.svg';
 import './App.css';
-import Register from './components/register/Register';
-import Login from './components/login/Login';
 
 function App() {
   return (
