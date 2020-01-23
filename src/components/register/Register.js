@@ -13,27 +13,31 @@ class Register extends Component {
         }
     }
 
-    _handleNameChange = event => {
-        this.setState({
-            username: event.currentTarget.value
-        })
+    _handleChange = event => {
+        this.setState({ [event.target.name]: event.target.value });
     }
 
-    _handlePasswordChange = event => {
-        this.setState({
-            password: event.currentTarget.value
-        })
-    }
-    _handleEmailChange = event => {
-        this.setState({
-            email: event.currentTarget.value
-        })
-    }
-    _handlePhoneChange = event => {
-        this.setState({
-            phone: event.currentTarget.value
-        })
-    }
+    // _handleNameChange = event => {
+    //     this.setState({
+    //         username: event.currentTarget.value
+    //     })
+    // }
+
+    // _handlePasswordChange = event => {
+    //     this.setState({
+    //         password: event.currentTarget.value
+    //     })
+    // }
+    // _handleEmailChange = event => {
+    //     this.setState({
+    //         email: event.currentTarget.value
+    //     })
+    // }
+    // _handlePhoneChange = event => {
+    //     this.setState({
+    //         phone: event.currentTarget.value
+    //     })
+    // }
 
     handleSubmit = event => {
         // debugger
@@ -81,19 +85,19 @@ class Register extends Component {
                     <div className="page-title">Register</div>
                     <label className="row">
                         Username *
-                        <input className="register-input" type="text" value={this.state.username} onChange={this._handleNameChange} />
+                        <input className="register-input" name="username" type="text" value={this.state.username} onChange={this._handleChange} />
                     </label>
                     <label className="row">
                         Password *
-                        <input className="register-input" type="password" value={this.state.password} onChange={this._handlePasswordChange} />
+                        <input className="register-input" name="password" type="password" value={this.state.password} onChange={this._handleChange} />
                     </label>
                     <label className="row">
                         Email *
-                        <input className="register-input" type="email" value={this.state.email} onChange={this._handleEmailChange} />
+                        <input className="register-input" name="email" type="email" value={this.state.email} onChange={this._handleChange} />
                     </label>
                     <label className="row">
                         Phone *
-                        <input className="register-input" type="tel" value={this.state.phone} onChange={this._handlePhoneChange} />
+                        <input className="register-input" name="phone" type="tel" value={this.state.phone} onChange={this._handleChange} />
                     </label>
                     <input type="submit" value="Submit" className="submit-button" />
                     <div className="error-message">{this.state.error}</div>
